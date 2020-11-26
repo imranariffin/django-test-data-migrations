@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "django-test-data-migrations"
+version = "0.1.0"
+description = "Test utilities for easily testing Django data migrations"
+authors = ["Imran Ariffin <ariffin.imran@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+repository = "https://github.com/imranariffin/django-test-data-migrations"
+
+keywords = [
+  "django",
+  "django-test",
+  "django-migration",
+  "django-migrations",
+  "django-data-migration-test",
+  "django-data-migration-tests",
+  "django-orm",
+  "migration",
+  "migrations",
+  "data-migration",
+  "data-migrations",
+  "orm",
+  "sql",
+  "tests",
+  "test",
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+Django = "3.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
