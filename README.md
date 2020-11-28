@@ -12,17 +12,17 @@ pip install django-test-data-migrations
 Say you a simple Django project with following general structure
 ```bash
 test_project/
-├── app_a
-│   ├── apps.py
-│   ├── __init__.py
-│   ├── migrations
-│   │   ├── 0001_initial.py
-│   │   ├── 0002_datafix_addsuffixtoname.py
-│   │   └── __init__.py
-│   ├── models.py
-│   └── tests
-│       ├── __init__.py
-│       └── test_0002_datafix_addsuffixtoname.py
+└── app_a
+    ├── apps.py
+    ├── __init__.py
+    ├── migrations
+    │   ├── 0001_initial.py
+    │   ├── 0002_datafix_addsuffixtoname.py
+    │   └── __init__.py
+    ├── models.py
+    └── tests
+        ├── __init__.py
+        └── test_0002_datafix_addsuffixtoname.py
 ```
 with the following model
 ```python
@@ -114,7 +114,7 @@ class DataMigrationsTestCase(DataMigrationsTestCaseBase):
 
 1. Runs your data migration test very fast.
 2. Encourages developers to write data-related Django migrations separately from model definition related Django migrations
-3. Writing tests for data related migrations is extremely important, but is either tricky to do or takes a long time to run. This library intends to make that easy
+3. Writing tests for data related migrations is extremely important, but is either tricky to do or takes a long time to run. This library intends to testing data migrations easy and fast
 
 ## Development
 
