@@ -166,3 +166,7 @@ poetry install
 make test
 ```
 You should be ready to start development
+
+## Links
+
+* [PyPi](https://pypi.org/project/django-test-data-migrations/)
