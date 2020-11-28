@@ -2,13 +2,12 @@ from importlib import import_module
 
 from django.test import TestCase
 
-from app_a.models import Animal
 
-
-class DataFixTestCaseBase(TestCase):
+class DataMigrationsTestCaseBase(TestCase):
     app_name = None
     migration_name = None
     data_forward = None
+    data_backward = None
 
     @classmethod
     def setUpClass(cls):
@@ -28,24 +27,7 @@ class DataFixTestCaseBase(TestCase):
             migration_module.data_forward(*args)
         cls.data_forward = _f
 
-
-class DataFixTestCase(DataFixTestCaseBase):
-    app_name = "app_a"
-    migration_name = "0002_appa_datafix_addsuffixtoname"
-
-    def test_data_fix(self):
-        dog = Animal.objects.create(name="Dog", species="dog")
-        cat = Animal.objects.create(name="Cat", species="cat")
-
-
-        self.data_forward(Animal)
-
-        self.assertEqual(
-            Animal.objects.get(id=dog.id).name,
-            "Dog ZZ",
-        )
-        self.assertEqual(
-            Animal.objects.get(id=cat.id).name,
-            "Cat ZZ",
-        )
-
+        if hasattr(migration_module, "data_backward"):
+            def _b(self, *args):
+                migration_module.data_backward(*args)
+            cls.data_backward = _b

@@ -2,16 +2,29 @@
 
 from django.db import migrations
 
+SUFFIX = " ZZ"
+
 
 def data_forward(Animal):
     for animal in Animal.objects.all():
-        animal.name += " ZZ"
+        animal.name += SUFFIX
+        animal.save()
+
+
+def data_backward(Animal):
+    for animal in Animal.objects.filter(name__endswith=SUFFIX):
+        animal.name = animal.name.rstrip(SUFFIX)
         animal.save()
 
 
 def forward(apps, schema_editor):
     Animal = apps.get_model("app_a", "Animal")
     data_forward(Animal)
+
+
+def backward(apps, schema_editor):
+    Animal = apps.get_model("app_a", "Animal")
+    data_backward(Animal)
 
 
 class Migration(migrations.Migration):
@@ -21,5 +34,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(forward, migrations.RunPython.noop),
+        migrations.RunPython(forward, backward),
     ]
