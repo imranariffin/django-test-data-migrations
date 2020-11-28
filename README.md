@@ -38,7 +38,7 @@ class YourDataMigrationTestCase(DataMigrationsTestCaseBase):
 ```
 
 ## Example
-Say you a simple Django project with following general structure
+Say you have a simple Django project with following general structure
 ```bash
 test_project/
 └── app_a
