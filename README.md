@@ -9,6 +9,35 @@ pip install django-test-data-migrations
 ```
 
 ## Usage
+
+Define the following functions in your migration file
+1. `data_forward(*args)`
+2. `data_backward(*args)` (optional)
+
+```python
+from django_test_data_migrations import DataMigrationsTestCaseBase
+
+from app_a.models import Animal
+
+class YourDataMigrationTestCase(DataMigrationsTestCaseBase):
+    def test__forward_migration__something_important(self):
+        # Prepare some data
+
+        # Run
+        self.data_forward(some_arg_0, some_arg_1, ...)
+
+        # Some assertions
+    
+    def test__backward_migration__something_important(self):
+        # Prepare some data
+
+        # Run
+        self.data_backward(some_arg_0, some_arg_1, ...)
+
+        # Some assertions
+```
+
+## Example
 Say you a simple Django project with following general structure
 ```bash
 test_project/
