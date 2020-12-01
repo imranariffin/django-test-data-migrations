@@ -139,11 +139,11 @@ class DataMigrationsTestCase(DataMigrationsTestCaseBase):
         self.assertEqual(Animal.objects.get(id=cat.id).name, "Cat zz")
 ```
 
-## Why do I need this library?
+## Why would you need this library?
 
-1. Runs your data migration test very fast.
-2. Encourages developers to write data-related Django migrations separately from model definition related Django migrations
-3. Writing tests for data related migrations is extremely important, but is either tricky to do or takes a long time to run. This library intends to testing data migrations easy and fast
+1. It runs your data migration test very fast.
+2. It encourages developers to write data-related Django migrations separately from model definition related Django migrations
+3. Writing tests for data related migrations is extremely important, but it's either tricky to do or very run-time consuming. This library intends to enable testing data migrations easy and fast
 
 ## Development
 
