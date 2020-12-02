@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/django-test-data-migrations.svg)](https://badge.fury.io/py/django-test-data-migrations)
+
 # Django Data Migration Test
 
 Test utilities for easily testing Django data migrations
