@@ -29,6 +29,6 @@ jobs:
         file: ./test_project/coverage.xml
         fail_ci_if_error: true
         verbose: true
-        directory: ./test_project/coverage/reports/
+        directory: ./test_project/
         flags: unittest
-        path_to_write_report: ./test_project/coverage/codecov_report.txt
+        path_to_write_report: ./test_project/codecov_report.txt
