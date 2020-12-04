@@ -1,4 +1,4 @@
-.PHONY: test package test_package
+.PHONY: test package test_package uploadcodecov
 
 test:
 	cd ./test_project \
@@ -14,3 +14,8 @@ package:
 	poetry run safety check --bare --full-report
 
 test_package: test package
+
+uploadcodecov:
+	curl -s https://codecov.io/bash > codecov && \
+		chmod +x codecov && \
+		./codecov -f ./test_project/coverage.xml
