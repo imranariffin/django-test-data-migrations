@@ -2,11 +2,11 @@
 
 test:
 	cd ./test_project \
-	  && poetry run ./manage.py test\
-	 	 -v 2 --noinput \
-		 --with-coverage \
-		 --with-xunit \
-		 --xunit-file coverage.xml
+		&& poetry run ./manage.py test \
+			-v 2 --noinput \
+		 	--with-coverage \
+		 	--with-xunit \
+		 	--xunit-file coverage.xml
 
 package:
 	poetry check

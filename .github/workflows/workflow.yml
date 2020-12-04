@@ -1,0 +1,23 @@
+name: Pull Request Workflow
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run_tests:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+
+    - name: Run Tests
+      run: |
+        make test
+
+    - uses: codecov/codecov-action@v1
+      with:
+        file: ./test_project/coverage.xml
+        fail_ci_if_error: true
+        verbose: true
