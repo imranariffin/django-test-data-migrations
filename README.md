@@ -1,4 +1,4 @@
-[![PyPI version](https://badge.fury.io/py/django-test-data-migrations.svg)](https://badge.fury.io/py/django-test-data-migrations) [![Downloads](https://pepy.tech/badge/django-test-data-migrations/week)](https://pepy.tech/project/django-test-data-migrations)
+[![PyPI version](https://badge.fury.io/py/django-test-data-migrations.svg)](https://badge.fury.io/py/django-test-data-migrations) [![Downloads](https://pepy.tech/badge/django-test-data-migrations/week)](https://pepy.tech/project/django-test-data-migrations) [![codecov](https://codecov.io/gh/imranariffin/django-test-data-migrations/branch/main/graph/badge.svg?token=ipUDI8A4ol)](https://codecov.io/gh/imranariffin/django-test-data-migrations)
 
 # Django Data Migration Test
 

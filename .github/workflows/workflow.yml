@@ -24,14 +24,5 @@ jobs:
       run: |
         poetry install && make test
 
-    - name: Show files
-      run: ls -al ./test_project/
-
-    - uses: codecov/codecov-action@v1
-      with:
-        file: ./test_project/coverage.xml
-        fail_ci_if_error: true
-        verbose: true
-        directory: ./test_project/
-        flags: unittest
-        # path_to_write_report: ./test_project/codecov_report.txt
+    - name: Upload to codecov
+      run: make uploadcodecov
