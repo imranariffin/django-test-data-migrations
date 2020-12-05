@@ -22,7 +22,10 @@ jobs:
 
     - name: Run Tests
       run: |
-        poetry install && make test
+        python -m venv venv && \
+          source venv/bin/activate && \
+          poetry install && \
+          make test
 
     - name: Upload to codecov
       run: make uploadcodecov
