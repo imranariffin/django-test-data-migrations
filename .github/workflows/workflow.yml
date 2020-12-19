@@ -26,6 +26,3 @@ jobs:
           source venv/bin/activate && \
           poetry install && \
           make test
-
-    - name: Upload to codecov
-      run: make uploadcodecov
