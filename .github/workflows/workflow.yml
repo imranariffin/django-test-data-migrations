@@ -26,3 +26,22 @@ jobs:
           source venv/bin/activate && \
           poetry install && \
           make test
+
+  publish:
+    name: Publish to PYPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.1.2
+
+      - name: Publish
+        run: |
+          poetry build && \
+          poetry run twine upload --repository testpypi dist/*
