@@ -23,7 +23,6 @@ class ValidateTestCase(unittest.TestCase):
 
     def test_raise_when_migration_is_not_python(self):
         migration_methods = [
-            # migrations.AddModel,
             (
                 migrations.CreateModel,
                 dict(
@@ -34,7 +33,27 @@ class ValidateTestCase(unittest.TestCase):
                         ('name', models.CharField(max_length=100)),
                     ],
                 ),
-            )
+            ),
+            (
+                migrations.RenameModel,
+                dict(old_name='SomeNewModel', new_name='SomeNewNewModel'),
+            ),
+            (
+                migrations.AlterModelTable,
+                dict(name='SomeNewModel', table='testproject_somenewmodel'),
+            ),
+            (
+                migrations.AlterUniqueTogether,
+                dict(name='testproject_somenewmodel', unique_together=('species', 'name')),
+            ),
+            (
+                migrations.AddField,
+                dict(model_name='SomeNewModel', name='somenewfield', field=models.CharField(max_length=100)),
+            ),
+            (
+                migrations.AddConstraint,
+                dict(model_name='SomeNewModel', constraint=models.constraints.UniqueConstraint(fields=['name'], name='unique_name')),
+            ),
         ]
 
         for migration_method, kwargs in migration_methods:
