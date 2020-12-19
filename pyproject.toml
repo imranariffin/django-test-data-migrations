@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-test-data-migrations"
-version = "0.1.1"
+version = "0.1.2"
 description = "Test utilities for easily testing Django data migrations"
 authors = ["Imran Ariffin <ariffin.imran@gmail.com>"]
 license = "MIT"
