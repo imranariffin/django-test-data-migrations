@@ -1,0 +1,29 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish to PYPI
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@main
+
+    - uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - uses: abatilo/actions-poetry@v2.0.0
+      with:
+        poetry-version: 1.1.2
+
+    - run: poetry install
+    - run: poetry build
+    - name: Upload to PYPI
+      run: poetry run twine upload --repository $PYPI_REPOSITORY --username __token__ --password $PYPI_API_TOKEN ./dist/*
+      env:
+        PYPI_API_TOKEN: ${{secrets.PYPI_API_TOKEN}}
+        PYPI_REPOSITORY: pypi

@@ -1,4 +1,4 @@
-.PHONY: test test_lib test_test_project package test_package
+.PHONY: test test_lib test_test_project test_package
 
 test_test_project:
 	cd ./test_project && \
@@ -10,13 +10,10 @@ test_test_project:
 			--xunit-file coverage.xml
 
 test_lib:
-	coverage run --source=tests -m unittest discover tests -v
+	poetry run coverage run --source=tests -m unittest discover tests -v
 
-package:
+test_package:
 	poetry check
 	poetry run pip check
-	poetry run safety check --bare --full-report
 
-test: test_lib test_test_project
-
-test_package: test package
+test: test_lib test_test_project test_package
