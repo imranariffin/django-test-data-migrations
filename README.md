@@ -16,6 +16,8 @@ Define the following functions in your migration file
 1. `data_forward(*args)`
 2. `data_backward(*args)` (optional)
 
+And then you can test the following way:
+
 ```python
 from django_test_data_migrations import DataMigrationsTestCaseBase  
 
