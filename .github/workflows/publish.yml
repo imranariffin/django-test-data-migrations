@@ -23,7 +23,7 @@ jobs:
     - run: poetry install
     - run: poetry build
     - name: Upload to PYPI
-      run: poetry run twine upload --repository $PYPI_REPOSITORY --username __token__ --password $PYPI_API_TOKEN ./dist/*
+      run: make publish
       env:
         PYPI_API_TOKEN: ${{secrets.PYPI_API_TOKEN}}
         PYPI_REPOSITORY: pypi

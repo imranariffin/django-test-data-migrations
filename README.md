@@ -17,7 +17,7 @@ Define the following functions in your migration file
 2. `data_backward(*args)` (optional)
 
 ```python
-from django_test_data_migrations import DataMigrationsTestCaseBase
+from django_test_data_migrations import DataMigrationsTestCaseBase  
 
 from app_a.models import Animal
 
@@ -73,29 +73,29 @@ along with the following migration
 
 from django.db import migrations
 
-SUFFIX = " ZZ"
 
-
-def data_forward(Animal):
+def data_forward(Animal, suffix):
     for animal in Animal.objects.all():
-        animal.name += SUFFIX
+        animal.name += suffix
         animal.save()
 
 
-def data_backward(Animal):
-    for animal in Animal.objects.filter(name__endswith=SUFFIX):
-        animal.name = animal.name.rstrip(SUFFIX)
+def data_backward(Animal, suffix):
+    for animal in Animal.objects.filter(name__endswith=suffix):
+        animal.name = animal.name.rstrip(suffix)
         animal.save()
 
 
 def forward(apps, schema_editor):
+    suffix = ' ZZ'
     Animal = apps.get_model("app_a", "Animal")
-    data_forward(Animal)
+    data_forward(Animal, suffix)
 
 
 def backward(apps, schema_editor):
+    suffix = ' ZZ'
     Animal = apps.get_model("app_a", "Animal")
-    data_backward(Animal)
+    data_backward(Animal, suffix)
 
 
 class Migration(migrations.Migration):
