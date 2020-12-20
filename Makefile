@@ -1,4 +1,4 @@
-.PHONY: test test_lib test_test_project test_package
+.PHONY: test test_lib test_test_project test_package publish
 
 test_test_project:
 	cd ./test_project && \
@@ -17,3 +17,12 @@ test_package:
 	poetry run pip check
 
 test: test_lib test_test_project test_package
+
+publish:
+	poetry run twine upload \
+		--skip-existing \
+		--verbose \
+		--repository ${PYPI_REPOSITORY} \
+		--username __token__ \
+		--password ${PYPI_API_TOKEN} \
+		./dist/*
